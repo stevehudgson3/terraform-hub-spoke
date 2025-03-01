@@ -28,35 +28,7 @@ resource "aws_ec2_transit_gateway" "tgw" {
   }
 }
 
-# 🔹 Attach Spoke 1 VPC to the Transit Gateway
-resource "aws_ec2_transit_gateway_vpc_attachment" "spoke1_attach" {
-  transit_gateway_id = aws_ec2_transit_gateway.tgw.id
-  vpc_id             = aws_vpc.spoke1_vpc.id
-  subnet_ids         = [aws_subnet.spoke1_subnet.id]
-  tags = {
-    Name = "Spoke1-VPC-Attachment"  # Name for Spoke1 VPC attachment
-  }
-}
 
-# 🔹 Attach Spoke 2 VPC to the Transit Gateway
-resource "aws_ec2_transit_gateway_vpc_attachment" "spoke2_attach" {
-  transit_gateway_id = aws_ec2_transit_gateway.tgw.id
-  vpc_id             = aws_vpc.spoke2_vpc.id
-  subnet_ids         = [aws_subnet.spoke2_subnet.id]
-  tags = {
-    Name = "Spoke2-VPC-Attachment"  # Name for Spoke2 VPC attachment
-  }
-}
-
-# 🔹 Attach Hub VPC to the Transit Gateway (Added missing attachment)
-resource "aws_ec2_transit_gateway_vpc_attachment" "hub_attach" {
-  transit_gateway_id = aws_ec2_transit_gateway.tgw.id
-  vpc_id             = aws_vpc.hub_vpc.id
-  subnet_ids         = [aws_subnet.hub_subnet.id]
-  tags = {
-    Name = "Hub-VPC-Attachment"  # Name for Hub VPC attachment
-  }
-}
 
 # 🔹 SPOKE 1 VPC
 resource "aws_vpc" "spoke1_vpc" {
