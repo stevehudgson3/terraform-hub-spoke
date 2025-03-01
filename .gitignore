@@ -1,0 +1,25 @@
+# Ignore Terraform cache and local state
+.terraform/
+.terraform.tfstate.lock.info
+
+# Ignore Terraform state files (Sensitive Data)
+terraform.tfstate
+terraform.tfstate.backup
+
+# Ignore Terraform crash logs
+crash.log
+crash.*.log
+
+# Ignore any variable files with sensitive credentials
+*.tfvars
+*.tfvars.json
+
+# Ignore editor-specific files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Ignore system files
+.DS_Store
+Thumbs.db
